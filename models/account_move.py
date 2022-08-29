@@ -11,7 +11,6 @@ class AccountMove(models.Model):
 
     @api.onchange("sale_order_ids")
     def _onchange_sale_order(self):
-        # self.invoice_line_ids = False
         self.line_ids = False
         order_lines = self.env['sale.order.line'].search(
             [('order_id', 'in', self.sale_order_ids.ids)])
